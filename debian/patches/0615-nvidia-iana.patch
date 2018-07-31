@@ -1,0 +1,36 @@
+Description: Add IANA ID for NVIDIA hardware
+ Add the NVIDIA IANA ID to the hardcoded list used in ipmitool <= 1.8.18.
+ After upstream commit "9d41136 ID:491 - Fetch vendor IDs from IANA", ipmitool
+ generates a list of vendor IDs dynamically at build time, so we can drop this
+ patch in future releases.
+Author: dann frazier <dannf@debian.org>
+Origin: backport
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=903616
+Forwarded: not-needed
+Last-Update: 2018-07-31
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: ipmitool-1.8.16/include/ipmitool/ipmi.h
+===================================================================
+--- ipmitool-1.8.16.orig/include/ipmitool/ipmi.h
++++ ipmitool-1.8.16/include/ipmitool/ipmi.h
+@@ -269,6 +269,7 @@ typedef enum IPMI_OEM {
+      IPMI_OEM_RADISYS    = 4337,
+      IPMI_OEM_BROADCOM   = 4413,
+      IPMI_OEM_MAGNUM     = 5593,
++     IPMI_OEM_NVIDIA     = 5703,
+      IPMI_OEM_TYAN       = 6653,
+      IPMI_OEM_QUANTA     = 7244,
+      IPMI_OEM_NEWISYS    = 9237,
+Index: ipmitool-1.8.16/lib/ipmi_strings.c
+===================================================================
+--- ipmitool-1.8.16.orig/lib/ipmi_strings.c
++++ ipmitool-1.8.16/lib/ipmi_strings.c
+@@ -71,6 +71,7 @@ const struct valstr ipmi_oem_info[] = {
+    { IPMI_OEM_ERICSSON,               "Ericsson AB"},
+    { IPMI_OEM_QUANTA,                 "Quanta" },
+    { IPMI_OEM_ADVANTECH,              "Advantech" },
++   { IPMI_OEM_NVIDIA,                 "NVIDIA Corporation" },
+    { 0xffff , NULL },
+ };
+ 

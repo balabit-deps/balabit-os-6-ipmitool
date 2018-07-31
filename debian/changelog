@@ -1,3 +1,10 @@
+ipmitool (1.8.16-3ubuntu0.2) xenial; urgency=medium
+
+  * Report the manufacturer of NVIDIA BMCs as "NVIDIA Corporation",
+    not "Unknown". (LP: #1781293)
+
+ -- dann frazier <dannf@ubuntu.com>  Tue, 31 Jul 2018 14:00:57 -0600
+
 ipmitool (1.8.16-3ubuntu0.1) xenial; urgency=medium
 
   * debian/patches/fix_set_time_set_c7169bc2.patch: take into account minute
